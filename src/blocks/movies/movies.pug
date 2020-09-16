@@ -1,0 +1,21 @@
+//- Все примеси в этом файле должны начинаться c имени блока (movies)
+
+mixin movies(classes)
+
+  //- Принимает:
+  //-   classes    {string} - список классов
+  //- Вызов:
+        +movies('some-class')
+
+  -
+    // список классов
+    let allClasses = '';
+    if(typeof(classes) !== 'undefined' && classes) {
+      for (let item of classes.split(',')) {
+        allClasses = allClasses + item.trim();
+      }
+    }
+
+  section(class=`${allClasses.length > 0 ? `${allClasses} ` : ``}movies`)&attributes(attributes)
+    h2.visually-hidden Movies list
+    block
