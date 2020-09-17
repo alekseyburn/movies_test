@@ -9,13 +9,34 @@ mixin movies(classes)
 
   -
     // список классов
-    let allClasses = '';
-    if(typeof(classes) !== 'undefined' && classes) {
-      for (let item of classes.split(',')) {
-        allClasses = allClasses + item.trim();
+      let allClasses = '';
+      if(typeof(classes) !== 'undefined' && classes) {
+        for (let item of classes.split(',')) {
+          allClasses = allClasses + item.trim();
+        }
       }
-    }
+
+  include movies.data.pug
 
   section(class=`${allClasses.length > 0 ? `${allClasses} ` : ``}movies`)&attributes(attributes)
-    h2.visually-hidden Movies list
-    block
+    h2.movies__title Избранное
+    ul.movies__list
+      each movie in moviesList
+        +movies-item(movie)
+
+mixin movies-item(item)
+
+  li.movies__item
+    picture
+      source(type='image/webp', srcset=`img/${item.img}.webp`)
+      img.movies__img(width='319', height='459', src=`img/${item.img}.jpg`, alt=`${item.name}`, loading='lazy')
+    +btn('Нравится', 'movies__btn')(class='btn--like')= item.likeCount
+    +btn('Не нравится', 'movies__btn')(class='btn--dislike')= item.dislikeCount
+    a.movies__link(href=item.url)= item.name
+    span.movies__seasons= item.seasonsCount
+    .movies__info
+      +btn('В избранное', 'movies__btn')(class='btn--favorites')
+      +btn('Закрыть', 'movies__btn')(class='btn--close')
+      a.movies__play-link(href=item.url)
+      +btn('Рейтинг на кинопоиске', 'movies__link')(href='/', class='movies__link--rating')= item.kinopoisk
+      +btn('Рейтинг на IMDb', 'movies__link')(href='/', class='movies__link--rating')= item.imdb

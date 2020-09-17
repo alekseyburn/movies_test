@@ -10,10 +10,9 @@ block meta
     link(rel='preload', href='fonts/Poppins-Regular.woff2', as='font', crossorigin='anonymous')
 
 block content
-  h1 Заголовок с каким-то эффектом
+  h1.visually-hidden Фильмы
+  +menu()
   +movies()
-    +menu()
-    +movies-list()
 
 
 
