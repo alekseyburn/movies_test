@@ -45,6 +45,15 @@ p {
   hyphenate-limit-zone: 8%;
 }
 
+.page-main {
+  max-width: $desktop-width;
+  margin: 0 auto;
+  padding-top: 70px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+}
+
 //.svg-test {
 //  fill: black;
 //  stroke: green;

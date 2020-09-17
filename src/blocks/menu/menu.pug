@@ -17,13 +17,13 @@ mixin menu(classes)
     }
 
   ul(class=`${allClasses.length > 0 ? `${allClasses} ` : ``}menu`)&attributes(attributes)
-    li.menu__item.menu__item--actions.menu__item--active
-      a.menu__link(href='/') Действия
+    li.menu__item.menu__item--actions
+      a.menu__link.menu__link--active(href='/') Действия
       ul.menu__sublist.menu__sublist--actions
         li.menu__subitem.menu__subitem--views
           a.menu__sublink(href='/') Просмотры
         li.menu__subitem.menu__subitem--favorites
-          a.menu__sublink(href='/') Избранное
+          a.menu__sublink.menu__sublink--active(href='/') Избранное
         li.menu__subitem.menu__subitem--postponed
           a.menu__sublink(href='/') Отложенное
     li.menu__item.menu__item--tariffs

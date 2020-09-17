@@ -6,17 +6,18 @@
 }
 
 @mixin retina-bg($image, $ext) {
-  background-image: url('../img/' + $image + '@1x.' + $ext);
+  background-image: url("../img/" + $image + "@1x." + $ext);
 
   @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-    background-image: url('../img/' + $image + '@2x.' + $ext);
+    background-image: url("../img/" + $image + "@2x." + $ext);
   }
 }
 
 @mixin css-triangle($color, $direction, $size: 6px, $round: false) {
-  content: '';
-  display: block;
+  content: "";
   position: absolute;
+
+  display: block;
   width: 0;
   height: 0;
 
@@ -25,30 +26,34 @@
   }
 
   @if $direction == down {
-    border-left: $size solid transparent;
-    border-right: $size solid transparent;
-    border-top: $size solid $color;
     margin-top: 0 - round($size / 2.5);
+
+    border-top: $size solid $color;
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
   }
 
   @else if $direction == up {
-    border-left: $size solid transparent;
+    margin-bottom: 0 - round($size / 2.5);
+
     border-right: $size solid transparent;
     border-bottom: $size solid $color;
-    margin-bottom: 0 - round($size / 2.5);
+    border-left: $size solid transparent;
   }
 
   @else if $direction == right {
+    margin-right: -$size;
+
     border-top: $size solid transparent;
     border-bottom: $size solid transparent;
     border-left: $size solid $color;
-    margin-right: -$size;
   }
 
   @else if  $direction == left {
-    border-top: $size solid transparent;
-    border-bottom: $size solid transparent;
-    border-right: $size solid $color;
     margin-left: -$size;
+
+    border-top: $size solid transparent;
+    border-right: $size solid $color;
+    border-bottom: $size solid transparent;
   }
 }
