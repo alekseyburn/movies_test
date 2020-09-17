@@ -1,5 +1,5 @@
 {
-  "name": "ab-start-project",
+  "name": "Movies",
   "version": "1.0.0",
   "description": "Установка: выполнить в папке проекта: `npm i`.",
   "main": "gulpfile.js",

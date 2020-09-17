@@ -1,0 +1,39 @@
+//- Все примеси в этом файле должны начинаться c имени блока (menu)
+
+mixin menu(classes)
+
+  //- Принимает:
+  //-   classes    {string} - список классов
+  //- Вызов:
+        +menu('some-class')
+
+  -
+    // список классов
+    let allClasses = '';
+    if(typeof(classes) !== 'undefined' && classes) {
+      for (let item of classes.split(',')) {
+        allClasses = allClasses + item.trim();
+      }
+    }
+
+  ul(class=`${allClasses.length > 0 ? `${allClasses} ` : ``}menu`)&attributes(attributes)
+    li.menu__item.menu__item--actions.menu__item--active
+      a.menu__link(href='/') Действия
+      ul.menu__sublist.menu__sublist--actions
+        li.menu__subitem.menu__subitem--views
+          a.menu__sublink(href='/') Просмотры
+        li.menu__subitem.menu__subitem--favorites
+          a.menu__sublink(href='/') Избранное
+        li.menu__subitem.menu__subitem--postponed
+          a.menu__sublink(href='/') Отложенное
+    li.menu__item.menu__item--tariffs
+      a.menu__link(href='/') Тарифы
+      ul.menu__sublist.menu__sublist--tariffs
+        li.menu__subitem.menu__subitem--econom
+          a.menu__sublink(href='/') Эконом
+        li.menu__subitem.menu__subitem--standart
+          a.menu__sublink(href='/') Стандарт
+        li.menu__subitem.menu__subitem--vip
+          a.menu__sublink(href='/') VIP
+    li.menu__item.menu__item--settings
+      a.menu__link(href='/') Настройки
