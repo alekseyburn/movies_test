@@ -7,14 +7,14 @@ let config = {
   ],
   'alwaysAddBlocks': [
     'sprite-svg',
-    'sprite-png',
+    // 'sprite-png',
     // 'object-fit-polyfill',
   ],
   'addStyleBefore': [
     'src/sass/variables.scss',
     'src/sass/mixins.scss',
     // 'src/sass/animations.scss',
-    'src/sass/fonts.scss',
+    // 'src/sass/fonts.scss',
     'src/sass/visually-hidden.scss',
     'src/sass/scaffolding.scss'
     // 'src/sass/corrections.scss'

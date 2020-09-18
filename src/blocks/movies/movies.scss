@@ -3,9 +3,199 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .movies {
+  flex-basis: 75%;
+}
+
+.movies__title {
+  margin: 0 0 40px;
+
+  font-weight: normal;
+}
+
+.movies__list {
+  @include reset-list();
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.movies__item {
+  position: relative;
+
+  display: grid;
+  flex-basis: 16.5%;
+  align-content: flex-start;
+  margin-bottom: 40px;
+
+  grid-template-columns: 1fr 1fr;
+
+  &:not(:nth-child(5n)) {
+    margin-right: 20px;
+  }
+
+  &:hover .movies__info,
+  &:focus .movies__info {
+    display: grid;
+  }
+}
+
+.movies__picture {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
 }
 
 .movies__img {
-  width: 200px;
+  display: block;
   height: 280px;
+  margin-bottom: 18px;
+
+  border-radius: 8px;
+  box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.8);
+
+  object-fit: cover;
+}
+
+.movies__btn {
+  align-items: flex-start;
+
+  grid-row: 2 / 3;
+
+  &--like {
+    margin-bottom: 5px;
+
+    grid-column: 1 / 2;
+    justify-self: flex-start;
+  }
+
+  &--dislike {
+    margin-bottom: 5px;
+
+    grid-column: 2 / -1;
+    justify-self: end;
+  }
+
+  &--fav {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  &--close {
+    width: 20px;
+    height: 20px;
+
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-self: flex-end;
+  }
+}
+
+.movies__svg {
+  display: block;
+
+  cursor: pointer;
+
+  fill: darken($alter-text-color, 25);
+
+  &--like,
+  &--dislike {
+    margin-right: 10px;
+  }
+
+  &--heart {
+    width: 24px;
+    height: 24px;
+
+    fill: transparent;
+    stroke: red;
+    stroke-width: 2px;
+  }
+
+  &--close {
+    fill: $main-text-color;
+  }
+
+  &--play {
+    width: 40px;
+    height: 40px;
+
+    fill: white;
+  }
+}
+
+.movies__link {
+  font-weight: 500;
+  line-height: var(--text-lh);
+  color: $main-text-color;
+
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+  justify-self: flex-start;
+
+  &--kinopoisk {
+    font-weight: 700;
+
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+
+  &--imdb {
+    font-weight: 700;
+
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    justify-self: flex-end;
+  }
+}
+
+.movies__seasons {
+  font-size: calc(var(--text-size) - 3px);
+  color: $alter-text-color;
+
+  grid-column: 1 / -1;
+  grid-row: 4 / 5;
+}
+
+.movies__info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: none;
+  justify-content: space-between;
+  align-content: space-between;
+  height: 280px;
+  padding: 15px;
+
+  background-color: rgba($main-bg-color, 0.8);
+  border-radius: 8px;
+
+  grid-template-columns: 1fr 1fr;
+  justify-items: start;
+}
+
+.movies__play-link {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  justify-self: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    bottom: -20px;
+    left: -20px;
+    z-index: -1;
+
+    background-color: rgba($main-text-color, 0.2);
+    border-radius: 50%;
+  }
 }

@@ -4,6 +4,8 @@
 
 .menu {
   @include reset-list();
+
+  flex-basis: 15%;
 }
 
 .menu__item {

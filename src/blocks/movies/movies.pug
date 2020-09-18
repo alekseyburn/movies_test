@@ -27,16 +27,29 @@ mixin movies(classes)
 mixin movies-item(item)
 
   li.movies__item
-    picture
+    picture.movies__picture
       source(type='image/webp', srcset=`img/${item.img}.webp`)
-      img.movies__img(width='319', height='459', src=`img/${item.img}.jpg`, alt=`${item.name}`, loading='lazy')
-    +btn('Нравится', 'movies__btn')(class='btn--like')= item.likeCount
-    +btn('Не нравится', 'movies__btn')(class='btn--dislike')= item.dislikeCount
+      img.movies__img(width='200', height='280', src=`img/${item.img}.jpg`, alt=`${item.name}`, loading='lazy')
+    +btn('', 'movies__btn movies__btn--like')(class='btn--like', aria-label="Количество лайков")
+      svg(class='movies__svg movies__svg--like', width='14', height='14')
+        use(xlink:href='img/sprite.svg#icon-like')
+      span= item.likeCount
+    +btn('', 'movies__btn movies__btn--dislike')(class='btn--dislike', aria-label="Количество дизлайков")
+      svg(class='movies__svg movies__svg--dislike', width='14', height='14')
+        use(xlink:href='img/sprite.svg#icon-dislike')
+      span= item.dislikeCount
     a.movies__link(href=item.url)= item.name
     span.movies__seasons= item.seasonsCount
     .movies__info
-      +btn('В избранное', 'movies__btn')(class='btn--favorites')
-      +btn('Закрыть', 'movies__btn')(class='btn--close')
+      +btn('', 'movies__btn movies__btn--fav')(class='btn--fav', aria-label="В избранное")
+        svg(class='movies__svg movies__svg--heart', width='24', height='24')
+          use(xlink:href='img/sprite.svg#icon-heart')
+      +btn('', 'movies__btn movies__btn--close')(class='btn--close', aria-label='Закрыть', data-tip='Удалить из избранного')
+        svg(class='movies__svg movies__svg--close', width='24', height='24')
+          use(xlink:href='img/sprite.svg#icon-close')
       a.movies__play-link(href=item.url)
-      +btn('Рейтинг на кинопоиске', 'movies__link')(href='/', class='movies__link--rating')= item.kinopoisk
-      +btn('Рейтинг на IMDb', 'movies__link')(href='/', class='movies__link--rating')= item.imdb
+        span.visually-hidden Воспроизвести
+        svg(class='movies__svg movies__svg--play', width='40', height='40')
+          use(xlink:href='img/sprite.svg#icon-play')
+      +btn('', 'movies__link')(href='/', class='movies__link--kinopoisk', aria-label='Рейтинг на кинопоиске')= item.kinopoisk
+      +btn('', 'movies__link')(href='/', class='movies__link--imdb', aria-label='Рейтинг на IMDb')= item.imdb
