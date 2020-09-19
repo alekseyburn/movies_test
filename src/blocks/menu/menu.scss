@@ -8,6 +8,12 @@
 
 .menu__item {
   margin-bottom: 25px;
+
+  &--active {
+    & .menu__sublist {
+      display: block;
+    }
+  }
 }
 
 .menu__link {
@@ -53,6 +59,8 @@
 
 .menu__sublist {
   @include reset-list();
+
+  display: none;
 }
 
 .menu__subitem {

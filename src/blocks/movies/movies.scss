@@ -94,6 +94,24 @@
   &--fav {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
+
+    &:hover,
+    &:focus {
+      & .movies__svg {
+        &--heart {
+          stroke: red;
+        }
+      }
+    }
+
+    &.fav-full {
+      & .movies__svg {
+        &--heart {
+          stroke: red;
+          fill: red;
+        }
+      }
+    }
   }
 
   &--close {
@@ -123,7 +141,7 @@
     height: 24px;
 
     fill: transparent;
-    stroke: red;
+    stroke: darken($alter-text-color, 25);
     stroke-width: 2px;
   }
 
@@ -162,6 +180,11 @@
     grid-row: 3 / 4;
     justify-self: flex-end;
   }
+
+  &:hover,
+  &:focus {
+    color: $alter-text-color;
+  }
 }
 
 .movies__seasons {
@@ -181,6 +204,7 @@
   grid-column: 1 / -1;
   grid-row: 2 / 3;
   justify-self: center;
+  transition: transform 0.3s ease-in-out;
 
   &::before {
     content: "";
@@ -193,6 +217,11 @@
 
     background-color: rgba($main-text-color, 0.2);
     border-radius: 50%;
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
   }
 }
 
