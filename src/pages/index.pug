@@ -11,7 +11,10 @@ block meta
 
 block content
   h1.visually-hidden Фильмы
-  +menu()
+  .page-main__menu-wrapper
+    button.page-main__menu-toggle(type='button', aria-label='Открыть/закрыть меню')
+      span
+    +menu('page-main__list')
   +movies()
 
 

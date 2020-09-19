@@ -15,24 +15,19 @@
 .movies__list {
   @include reset-list();
 
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   justify-content: space-between;
+
+  gap: 40px 40px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .movies__item {
-  position: relative;
-
   display: grid;
-  flex-basis: 16.5%;
   align-content: flex-start;
   margin-bottom: 40px;
 
   grid-template-columns: 1fr 1fr;
-
-  &:not(:nth-child(5n)) {
-    margin-right: 20px;
-  }
 
   &:hover .movies__info,
   &:focus .movies__info {
@@ -40,20 +35,41 @@
   }
 }
 
-.movies__picture {
+.movies__wrapper {
+  position: relative;
+
   grid-column: 1 / -1;
   grid-row: 1 / 2;
 }
 
 .movies__img {
   display: block;
-  height: 280px;
+  min-height: 280px;
   margin-bottom: 18px;
 
   border-radius: 8px;
   box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.8);
 
   object-fit: cover;
+}
+
+.movies__info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 18px;
+  left: 0;
+
+  display: none;
+  justify-content: space-between;
+  align-content: space-between;
+  padding: 15px;
+
+  background-color: rgba($main-bg-color, 0.8);
+  border-radius: 8px;
+
+  grid-template-columns: 1fr 1fr;
+  justify-items: start;
 }
 
 .movies__btn {
@@ -156,26 +172,6 @@
   grid-row: 4 / 5;
 }
 
-.movies__info {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  display: none;
-  justify-content: space-between;
-  align-content: space-between;
-  height: 280px;
-  padding: 15px;
-
-  background-color: rgba($main-bg-color, 0.8);
-  border-radius: 8px;
-
-  grid-template-columns: 1fr 1fr;
-  justify-items: start;
-}
-
 .movies__play-link {
   position: relative;
   z-index: 1;
@@ -197,5 +193,24 @@
 
     background-color: rgba($main-text-color, 0.2);
     border-radius: 50%;
+  }
+}
+
+@media (max-width: $tablet-width - 1px) {
+  .movies {
+    flex-grow: 1;
+  }
+
+  .movies__title {
+    font-size: var(--text-size-xl);
+    line-height: var(--text-lh-xl);
+    text-align: center;
+  }
+}
+
+@media (max-width: 478px) {
+  .movies {
+    padding-right: 30px;
+    padding-left: 30px;
   }
 }

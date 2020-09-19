@@ -20,8 +20,9 @@ $accent-color-hover: #6a3900;
 
 $font: "Arial", -apple-system, blinkmacsystemfont, "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
 
-$mobile-width: 320px;
-$tablet-width: 768px;
+$min-width: 320px;
+$mobile-width: 768px;
+$tablet-width: 1024px;
 $desktop-width: 1600px;
 
 $retina-dpi: 144dpi;

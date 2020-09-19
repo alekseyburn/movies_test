@@ -4,8 +4,6 @@
 
 .menu {
   @include reset-list();
-
-  flex-basis: 15%;
 }
 
 .menu__item {
@@ -42,6 +40,15 @@
       background-color: red;
     }
   }
+
+  &:hover,
+  &:focus {
+    color: $alter-text-color;
+
+    &::after {
+      border-top-color: $alter-text-color;
+    }
+  }
 }
 
 .menu__sublist {
@@ -54,9 +61,10 @@
 
 .menu__sublink {
   padding: 6px 20px;
-  border-radius: 20px;
 
   color: $alter-text-color;
+
+  border-radius: 20px;
 
   &--active {
     color: $main-text-color;
@@ -66,7 +74,54 @@
 
   &:hover,
   &:focus {
-    background-color: lighten($accent-color, 20);
     color: $main-text-color;
+
+    background-color: lighten($accent-color, 20);
+  }
+}
+
+@media (max-width: $tablet-width - 1px) {
+  .menu {
+    display: none;
+  }
+
+  .menu--opened .menu {
+    display: block;
+  }
+
+  html.no-js .menu {
+    display: block;
+  }
+}
+
+@media (max-width: $mobile-width - 1px) {
+  .menu {
+    position: fixed;
+    left: 0;
+    z-index: 2;
+
+    width: 200px;
+    height: 100vh;
+    padding-left: 10px;
+
+    background-color: $main-bg-color;
+    border-top-right-radius: 7px;
+    box-shadow: 10px 5px 10px 1px black;
+  }
+
+  .menu__link {
+    display: inline-flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &:not(:last-child)::after {
+      top: 25px;
+    }
+  }
+
+  .menu__sublink {
+    flex-grow: 1;
+
+    border-radius: 0;
   }
 }
